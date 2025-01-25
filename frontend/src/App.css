@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body #root {
+  @apply flex justify-center h-full m-0 bg-zinc-800 lg:bg-road lg:bg-cover lg:bg-no-repeat;
+}
+
+@layer base {
+  @font-face {
+    font-family: "ROBOTvar";
+    src: url('/fonts/ROBOTvar.ttf');
+  }
+  @font-face {
+    font-family: "VNvar";
+    src: url('/fonts/VN_var.ttf');
+  }
+}
