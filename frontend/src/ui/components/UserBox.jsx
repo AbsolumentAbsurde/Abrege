@@ -28,7 +28,7 @@ function ClientBox(props) {
     const { setInputText } = useInputUser();
 
     const testInput = (e) => {
-        setInputText(DOMPurify.sanitize(e.target.value));
+        setInputText(DOMPurify.sanitize(e.target.value.replace(/[^a-zA-Z0-9\u00C0-\u017F\s.,!?-]/g, "")));
     };
     
     return (
