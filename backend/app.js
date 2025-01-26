@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cors({
     origin: "http://localhost:5173",
     methods: ["POST"],
+    allowedHeaders: ["Content-Type"]
 }));
 
 const openai = new OpenAIApi.OpenAI({
@@ -21,7 +22,7 @@ const openai = new OpenAIApi.OpenAI({
 
 app.post("/api/summarize", async (req,res) => {
     if(req.method === "POST") {
-        const inputText = xss(req.body.inputText);
+        const inputText = xss(req.body.inputText.replace(/[^a-zA-Z0-9\u00C0-\u017F\s.,!?-]/g, ""));
 
         try {
             const prompt = await openai.chat.completions.create({
